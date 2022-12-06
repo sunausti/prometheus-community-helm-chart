@@ -1596,7 +1596,7 @@ prometheus-node-exporter:
     ## If true, create PSPs for node-exporter
     ##
     pspEnabled: false
-
+  endpoints: ['10.10.10.184','10.10.10.102']
 ## Manages Prometheus and Alertmanager components
 ##
 prometheusOperator:
@@ -2749,7 +2749,10 @@ prometheus:
     #    {{end}}
     #    relabel_configs:
     #    ...
-
+    additionalScrapeConfigs: |
+      - job_name: "node-exporter"
+        static_configs:
+        - targets: ['10.10.10.184:9100','10.10.10.102:9100']
 
     ## If additional scrape configurations are already deployed in a single secret file you can use this section.
     ## Expected values are the secret name and key
