@@ -858,8 +858,9 @@ grafana:
   ## Passed to grafana subchart and used by servicemonitor below
   ##
   service:
+    type: NodePort
     portName: http-web
-
+    nodePort: 32221
   serviceMonitor:
     # If true, a ServiceMonitor CRD is created for a prometheus operator
     # https://github.com/coreos/prometheus-operator
